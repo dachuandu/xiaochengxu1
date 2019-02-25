@@ -1,0 +1,50 @@
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200rpx;
+}
+.itemView{
+  display: flex;
+  flex-direction: column;
+  vertical-align: center;
+  margin: 20rpx auto;
+  width: 500rpx;
+  height: 90rpx;
+  justify-content: flex-start;
+  align-items: center;
+  
+}
+.input{
+padding-left:10px;
+margin: 1 auto;
+width: 90%;
+height: 80rpx;
+border: 1rpx solid green;
+border-radius: 25rpx;
+text-emphasis-color: black;
+}
+
+.button{  
+  width: 80%;
+  margin-top: 20rpx;
+  background-color: green;
+  color: white;
+  border-radius: 98rpx; 
+  line-height: 80rpx
+  }
