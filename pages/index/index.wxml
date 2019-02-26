@@ -15,11 +15,9 @@
         <input class="input" name="userID" placeholder=" 身份证" bindinput="userIDInput"/>
       </view>
       <view class="itemView">
-      <button class="button" type='submit'>检 索</button>
+      <button class="button" type='submit'bindtap="go">检 索</button>
       </view>
     </form>
-
     </block>
   </view>
-
 </view>

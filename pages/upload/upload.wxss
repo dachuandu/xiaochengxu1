@@ -1,0 +1,11 @@
+/* pages/upload/upload.wxss */
+
+.check_btn{
+  width: fit-content
+}
+.info_checker{
+  background-color: bisque;
+  display: flex;
+  flex-direction: column;
+  vertical-align: top;
+}

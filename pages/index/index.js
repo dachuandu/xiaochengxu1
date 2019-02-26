@@ -50,5 +50,11 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  go:function(e){
+    console.log(e)
+    wx.redirectTo({
+      url: '../upload/upload',
+    })
   }
 })

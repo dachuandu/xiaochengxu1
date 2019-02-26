@@ -1,0 +1,11 @@
+<!--pages/upload/upload.wxml-->
+<view class="container">
+<view class="info_checker">
+
+<text class="small_text">系统内手机号码：</text>
+<view class="item_row">
+<text class="small_text">{{SQLphonenumber}}</text>
+<button class="check_btn">修改</button>
+</view>
+</view>
+</view>

@@ -46,5 +46,6 @@ text-emphasis-color: black;
   background-color: green;
   color: white;
   border-radius: 98rpx; 
-  line-height: 80rpx
+  line-height: 70rpx;
+  font-size: 40rpx;
   }
