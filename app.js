@@ -1,17 +1,31 @@
 //app.js
 App({
-  onLaunch: function () {
+  onLaunch: function() {
     // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    var logs = wx.getStorageSync('logs') || [];
+    var code = '';
+    logs.unshift(Date.now());
+    wx.setStorageSync('logs', logs);
 
     // 登录
     wx.login({
       success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        if (res.code) {
+          // 发起网络请求
+          wx.request({
+            url: 'https://test.com/onLogin',
+            data: {
+              code: res.code
+            }
+          });
+          var app = getApp();
+          app.globalData.openId = res.code;
+          console.log('openid:', app.globalData.openId);
+        } else {
+          console.log('登录失败！' + res.errMsg);
+        }
       }
-    })
+    });
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -20,20 +34,26 @@ App({
           wx.getUserInfo({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
-              this.globalData.userInfo = res.userInfo
+              this.globalData.userInfo = res.userInfo;
 
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
+                this.userInfoReadyCallback(res);
               }
             }
-          })
+          });
         }
       }
-    })
+    });
   },
   globalData: {
-    userInfo: null
+    baseUrl: 'http://192.168.31.170/testupload-php/index.php/api/v1/',
+    uploadUrl: 'http://192.168.31.170/testupload-php/uploads/',
+    userInfo: null,
+    app_id: 'wx1ce0ad689cc22a07',
+    secret: 'e7fda21b768df24464b8523e9df0d825',
+    openId: '',
+    userIdNO: ''
   }
-})
+});

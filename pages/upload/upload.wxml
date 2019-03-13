@@ -1,11 +1,54 @@
-<!--pages/upload/upload.wxml-->
-<view class="container">
-<view class="info_checker">
-
-<text class="small_text">系统内手机号码：</text>
-<view class="item_row">
-<text class="small_text">{{SQLphonenumber}}</text>
-<button class="check_btn">修改</button>
-</view>
-</view>
+<!-- pages/upload/upload.wxml -->
+<image src='http://192.168.31.170/testupload-php/111.png' class="animationSlow"></image>
+<view class='page'>
+    <view class="page__bd">
+        <view class="container1">
+            <view class="info_checker">
+                <span class="span1">
+                    <text class="small_text">系统内手机号码：</text>
+                    <text class="small_text" name="oldnumber">{{SQLphonenumber}}</text>
+                </span>
+                <span class="span1">
+                    <button class="modify_btn" bindtap="showDialogBtn">修改</button>
+                </span>
+            </view>
+            <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+            <view class="modal-dialog" wx:if="{{showModal}}">
+                <view class="modal-title">更新手机号</view>
+                <view class="modal-content">
+                    <view class="modal-input">
+                        <input placeholder-class="input-holder" bindinput="newnumberinput" type="number" name="newnumber" maxlength="11" class="input" placeholder="请输入手机号"></input>
+                    </view>
+                    <view class="modal-input">
+                        <span>
+                            <input placeholder-class="input-holder" type="number" name="vcode" maxlength="4" class="input" placeholder="请输入验证码"></input>
+                        </span>
+                        <button class="modify_btn" bindtap="showDialogBtn">发送验证码</button>
+                    </view>
+                </view>
+                <view class="modal-footer">
+                    <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+                    <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view>
+                </view>
+            </view>
+            <scroll-view id="scroll" class="order-scroll" scroll-y="true" scroll-x="true">
+                <view class="uploader" bindtap="uploadimg" style="opacity:{{imgOpacityid_front}}">
+                    <image class="img" src='{{id_front}}' alt="点击上传身份证正面" id="id_front" />
+                    <image class="state" src='{{ready1}}' alt="state" />
+                </view>
+                <view class="uploader" bindtap="uploadimg" style="opacity:{{imgOpacityid_back}}">
+                    <image class="img" src='{{id_back}}' alt="身份证背面" id="id_back" />
+                    <image class="state" src='{{ready2}}' alt="state" />
+                </view>
+                <view class="uploader" bindtap="uploadimg" style="opacity:{{imgOpacitybankcard}}">
+                    <image class="img" src='{{bankcard}}' alt="银行卡正面" id="bankcard" />
+                    <image class="state" src='{{ready3}}' alt="state" />
+                </view>
+                <view class="uploader" bindtap="uploadimg" style="opacity:{{imgOpacityhand}}">
+                    <image class="img" src='{{hand}}' alt="手持银行卡和身份证的照片" id="hand" />
+                    <image class="state" src='{{ready4}}' alt="state" />
+                </view>
+            </scroll-view>
+        </view>
+    </view>
 </view>
